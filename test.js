@@ -26,27 +26,51 @@ const adminPaths2 = [
     },
   ];
 
+//   const adminRoutes = adminPaths2.reduce((acc, item)=>{
+
+//     if(item.path && item.element){
+//         acc.push({
+//             path: item.path,
+//             element: item.element
+//         });
+
+//     }
+//     if(item.Children){
+//         item.Children.forEach(child =>{
+//             acc.push({
+//                 path: child.path,
+//                 element: child.element
+//             });
+//         })
+//     }
+
+//     return acc;
+
+//   }, [])
   const adminRoutes = adminPaths2.reduce((acc, item)=>{
 
     if(item.path && item.element){
         acc.push({
-            path: item.path,
-            element: item.element
+            key: item.name,
+            label: "Navlink"
         });
 
     }
     if(item.Children){
-        item.Children.forEach(child =>{
-            acc.push({
-                path: child.path,
-                element: child.element
-            });
-        })
+        acc.push({
+            key: item.name,
+            label: item.name,
+            children: item.Children.map(child=> ({
+                key:child.name,
+                label:"Navlink"
+            }))
+        });
     }
 
     return acc;
 
   }, [])
 
-  console.log(adminRoutes);
+
+  console.log(JSON.stringify(adminRoutes));
   
