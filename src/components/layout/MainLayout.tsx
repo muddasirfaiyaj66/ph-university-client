@@ -1,5 +1,5 @@
 import { Button, Layout } from "antd";
-const { Header, Content, Footer } = Layout;
+const { Header, Content } = Layout;
 
 import { Outlet } from "react-router-dom";
 
@@ -37,7 +37,7 @@ const MainLayout = () => {
     dispatch(logout());
   };
   return (
-    <Layout style={{ height: "100vh" }}>
+    <Layout style={{ height: "100%" }}>
       <Sidebar />
       <Layout>
         <Header>
@@ -53,9 +53,7 @@ const MainLayout = () => {
             <Outlet />
           </div>
         </Content>
-        <Footer style={{ textAlign: "center" }}>
-          Ant Design ©{new Date().getFullYear()} Created by Ant UED
-        </Footer>
+        
       </Layout>
     </Layout>
   );
