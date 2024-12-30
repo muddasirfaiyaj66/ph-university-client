@@ -2,7 +2,7 @@ import { Button, Col, Flex } from "antd";
 import PHForm from "../../../components/form/PHForm";
 import PHSelect from "../../../components/form/PHSelect";
 import { toast } from "sonner";
-import { useAddAcademicDepartmentMutation, useGetAllAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement.api";
+import { useAddAcademicDepartmentMutation, useGetAcademicFacultiesQuery } from "../../../redux/features/admin/academicManagement.api";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 import PHInput from "../../../components/form/PHInput";
 import { TResponse } from "../../../types";
@@ -16,7 +16,7 @@ const CreateAcademicDepartment = () => {
 
  
   const { data: academicFacultyData } =
-    useGetAllAcademicFacultyQuery(undefined);
+  useGetAcademicFacultiesQuery(undefined);
     
     const facultyOptions: TFacultyOptions = academicFacultyData?.data
     ? academicFacultyData.data.map(({ _id, name }) => ({ value: _id, label: name }))

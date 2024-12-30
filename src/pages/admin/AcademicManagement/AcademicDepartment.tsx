@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useGetAllAcademicDepartmentQuery } from "../../../redux/features/admin/academicManagement.api";
+
 import { TQueryParam } from "../../../types";
 import dayjs from "dayjs";
 import { Button, Table, TableColumnsType, TableProps } from "antd";
+import { useGetAcademicDepartmentsQuery } from "../../../redux/features/admin/academicManagement.api";
 
 
 export type TTableData = {
@@ -17,7 +18,7 @@ export type TTableData = {
 const AcademicDepartment = () => {
     const [params, setParam] = useState<TQueryParam[] | undefined>(undefined);
     const { data: academicFacultyData, isFetching } =
-      useGetAllAcademicDepartmentQuery(params);
+      useGetAcademicDepartmentsQuery(params);
       console.log(academicFacultyData);
       
       const tableData = academicFacultyData?.data?.map(

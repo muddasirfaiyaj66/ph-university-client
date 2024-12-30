@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { TQueryParam } from "../../../types";
 import { TAcademicFaculty } from "../../../types/academicManagement.type";
-import { useGetAllAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement.api";
 import { Button, Table, TableColumnsType, TableProps } from "antd";
 import dayjs from "dayjs";
+import { useGetAcademicFacultiesQuery } from "../../../redux/features/admin/academicManagement.api";
 export type TTableData = Pick<
   TAcademicFaculty,
   "_id" | "name" | "createdAt" | "updatedAt"
@@ -12,7 +12,7 @@ export type TTableData = Pick<
 const AcademicFaculty = () => {
   const [params, setParam] = useState<TQueryParam[] | undefined>(undefined);
   const { data: academicFacultyData, isFetching } =
-    useGetAllAcademicFacultyQuery(params);
+  useGetAcademicFacultiesQuery(params);
   const tableData = academicFacultyData?.data?.map(
     ({ _id, name, createdAt, updatedAt }) => ({
       key: _id,
